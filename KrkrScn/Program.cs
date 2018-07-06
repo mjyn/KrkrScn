@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace KrkrScn
 {
@@ -52,8 +53,18 @@ namespace KrkrScn
                 }
 
             }
-
-                //var scnjson = new StreamReader("");
+            var sw = new StreamWriter("meguru.json");
+            //foreach (var serifu in SerifuDb)
+            //{
+            //    sw.WriteLine(serifu.Caption);
+            //    sw.WriteLine(serifu.CaptionOverride);
+            //    sw.WriteLine(serifu.Text);
+            //    sw.WriteLine(serifu.Voice);
+            //    sw.WriteLine();
+            //}
+            var json = JsonConvert.SerializeObject(SerifuDb);
+            sw.Write(json);
+            sw.Flush();
         }
     }
 }
